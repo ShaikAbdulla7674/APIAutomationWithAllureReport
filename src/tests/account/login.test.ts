@@ -11,7 +11,7 @@ describe("Accounts API Tests - Login", function () {
   it("Verify login with valid credentials", async function () {
 
     const allure = (global as any).allure;
-
+   console.log("added to my branch");
     if (!allure) {
       console.warn("Allure is not initialized. Check reporter config.");
     }
