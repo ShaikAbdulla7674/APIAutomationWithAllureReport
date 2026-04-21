@@ -10,9 +10,8 @@ describe("Accounts API Tests - Login", function () {
 
   it("Verify login with valid credentials", async function () {
 
-    const allure = (this as any).allure;
+    const allure = (global as any).allure;
 
-    // 🔴 SAFE GUARD (IMPORTANT)
     if (!allure) {
       console.warn("Allure is not initialized. Check reporter config.");
     }
@@ -23,13 +22,11 @@ describe("Accounts API Tests - Login", function () {
     // Act
     const response: LoginResponse = await accountApi.login(loginRequest);
 
-    // Step 1
     await allure?.step("Verify Successful Login Response", async () => {
       expect(response.statusCode).to.equal(200);
       expect(response.success).to.equal(true);
     });
 
-    // Step 2
     await allure?.step("Verify Token Details", async () => {
       expect(response.token).to.not.be.empty;
       expect(response.refreshToken).to.not.be.empty;

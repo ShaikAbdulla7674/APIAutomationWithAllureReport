@@ -1,11 +1,8 @@
-// src/tests/baseApi.ts
-
 import { AccountApis } from "../client/apis/accountApis";
 import { LoginRequest } from "../client/request/account/loginRequest";
 import { AppConfiguration } from "../configuration/appConfiguration";
 import * as fs from "fs";
 import { UserStore } from "../testdata/TestUserManager";
-import { allure } from "allure-js-commons";
 
 export class BaseApi {
 
@@ -14,8 +11,8 @@ export class BaseApi {
   static authTokenV2: string;
 
   async oneTimeSetUp() {
-     const allure = (this as any).allure;
-    await allure.step("Initializing the Test Setup", async () => {
+     const allure = (global as any).allure;
+    await allure?.step("Initializing the Test Setup", async () => {
 
       this.initializeServices();
 

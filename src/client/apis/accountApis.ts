@@ -6,7 +6,6 @@ import { LoginRequest } from "../request/account/loginRequest";
 import { LoginResponse } from "../response/account/loginResponse";
 import { SendRequestCommand } from "../sendRequestCommand";
 
-
 export class AccountApis extends BaseCommand {
 
   
@@ -15,8 +14,11 @@ export class AccountApis extends BaseCommand {
     const apiKey = "q5].Q7vf*C,4}p'8vVFp8KFsu<7WK->$LT#*7}Vn";
 
     // Equivalent of GetCommonHeaders(false, version)
-    const headers: Record<string, any> = BaseCommand.getCommonHeaders(false, version);
-    headers["x-ldi-api-key"] = apiKey;
+  const headers: Record<string, any> = BaseCommand.getCommonHeaders(false, version);
+  headers["x-ldi-api-key"] = apiKey;
+  headers["User-Agent"] = "Mozilla/5.0";
+  headers["Accept"] = "application/json";
+  headers["Content-Type"] = "application/json";
 
     const uri = `/api/mobile/v${version}/Account/login`;
 
