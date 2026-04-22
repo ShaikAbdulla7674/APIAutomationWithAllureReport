@@ -25,13 +25,14 @@ describe("Accounts API Tests - Login", function () {
     await allure?.step("Verify Successful Login Response", async () => {
       expect(response.statusCode).to.equal(200);
       expect(response.success).to.equal(true);
+                                                                                           
     });
 
     await allure?.step("Verify Token Details", async () => {
       expect(response.token).to.not.be.empty;
       expect(response.refreshToken).to.not.be.empty;
     });
-
+ 
   });
 
 });
